@@ -4,9 +4,13 @@ namespace CSharpAssessment
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            // Player creation
+            Player player = new Player();
+
+            
+            
         }
     }
 }
