@@ -30,14 +30,5 @@ namespace CSharpAssessment
             hostile = false;
             return hostile;
         }
-
-        // Inventory
-        // TODO add inventory items/files
-        public int gold;
-        public virtual float Gold()
-        {
-            gold = 0;
-            return gold;
-        }
     }
 }
