@@ -18,6 +18,7 @@ namespace CSharpAssessment
 
             // Player creation
             Player player = new Player();
+            player.gold = 25;
             // Player inventory creation
             Item[] myInventory;
             using (var reader = new StreamReader("inventory.csv"))
@@ -72,6 +73,7 @@ namespace CSharpAssessment
             // Main game loop
             while (isGameRunning == true)
             {
+                bool isMonsterAlive = false;
                 while (playerAlive == true)
                 {
                     // clock and day counter
@@ -149,24 +151,24 @@ namespace CSharpAssessment
                                 {
                                     Console.WriteLine($"{tmpFood.Name}: you have {tmpFood.Quantity} servings left.");
                                 }
-                                string drinkInput = Console.ReadLine().ToLower();
+                            }
+                            string drinkInput = Console.ReadLine().ToLower();
 
-                                // change quantity of beverage
-                                for (int i = 0; i < myInventory.Length; i++)
+                            // change quantity of beverage
+                            for (int i = 0; i < myInventory.Length; i++)
+                            {
+                                if (myInventory[i].Name == drinkInput)
                                 {
-                                    if (myInventory[i].Name == drinkInput)
+                                    if (myInventory[i].Quantity == 0)
                                     {
-                                        if (myInventory[i].Quantity == 0)
-                                        {
-                                            Console.WriteLine($"You don't have any servings of {myInventory[i].Name}.");
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine($"You drink a serving of {myInventory[i].Name}.");
-                                            player.hunger -= myInventory[i].HungerBoost;
-                                            player.thirst -= myInventory[i].ThirstBoost;
-                                            myInventory[i].Quantity--;
-                                        }
+                                        Console.WriteLine($"You don't have any servings of {myInventory[i].Name}.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"You drink a serving of {myInventory[i].Name}.");
+                                        player.hunger -= myInventory[i].HungerBoost;
+                                        player.thirst -= myInventory[i].ThirstBoost;
+                                        myInventory[i].Quantity--;
                                     }
                                 }
                             }
@@ -191,17 +193,72 @@ namespace CSharpAssessment
                         player.hunger += sleepInput;
                         player.thirst += sleepInput;
                         Console.WriteLine($"You sleep for {sleepInput} hours, and awaken feeling more rested.");
+                        Random sleepEncounter = new Random();
+                        //TODO add random "while you were sleeping" encounters
                     }
 
                     // travelling
                     if (gameInput == "travel") // TODO add random encounters
+                                               // TODO add town encounters
                     {
                         hoursSinceStart++;
                         time++;
                         player.hunger++;
                         player.thirst++;
                         player.fatigue++;
+                        Random travelEncounter = new Random();
+                        int newEncounter = travelEncounter.Next(20);
+                        Console.WriteLine($"New encounter number: {newEncounter}"); // TODO remove later, debug line
+                        if (newEncounter >= 6 && newEncounter <= 9)
+                        {
+                            Console.WriteLine("A monster appears!");
+                            Monster monster = new Monster();
+                            isMonsterAlive = true; // TODO add different types of monsters (name, stats)
+                        }
+                        else if(newEncounter >= 10) // newEncounter >= 10 && newEncounter <= 12
+                        {
+                            NPC bandit = new NPC(); // TODO if/else for choosing to fight or allow theft
+                            Console.WriteLine("A bandit appears!");
+                            Console.WriteLine("\"Alright, bud, we can do this the easy way or the hard way.\"");
+                            Console.WriteLine("WIll you allow this theft, or fight for your cart and wares?");
+                            string banditInput = Console.ReadLine().ToLower();
+
+                            if(banditInput == "allow")
+                            {
+                                Console.WriteLine("\"Smart choice, bud.\"");
+                                Random moneyStolenRand = new Random();
+                                double moneyStolenPercent = moneyStolenRand.Next(50);
+                                if(moneyStolenPercent < 10)
+                                {
+                                    moneyStolenPercent = 10;
+                                }
+                                double moneyStolen = player.gold * (moneyStolenPercent/100);
+                                player.gold -= Convert.ToInt32(moneyStolen);
+                                Console.WriteLine($"The thief rifles around, and steals {moneyStolen} gold. You now have {player.gold} gold pieces.");
+                                Console.WriteLine("The thief leaves. That was unfortunate...");
+                            }
+                            else if (banditInput == "fight")
+                            {
+                                isMonsterAlive = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("That's an unknown command. The thief has a knife pointed at you, so type allow or fight quickly!");
+                            }
+                        }
+                        else if(newEncounter >= 13)
+                        {
+                            Console.WriteLine("Another traveller comes up the path.");
+                            NPC npc = new NPC();
+                        }
                     }
+
+                    // fight loop
+                    //while(isMonsterAlive == true)
+                    //{
+
+                    //}
+
                     if (gameInput == "quit")
                     {
                         Console.WriteLine("Are you sure you want to quit?");
@@ -270,8 +327,11 @@ namespace CSharpAssessment
                 switch (playAgain)
                 {
                     case "yes":
-                        player = new Player();
-                        player.name = nameInput;
+                        player = new Player
+                        {
+                            name = nameInput
+                        };
+                        player.gold = 25;
                         hoursSinceStart = 0;
                         time = 8;
                         using (var reader = new StreamReader("inventory.csv"))
@@ -283,8 +343,11 @@ namespace CSharpAssessment
                         playerAlive = true;
                         break;
                     case "y":
-                        player = new Player();
-                        player.name = nameInput;
+                        player = new Player
+                        {
+                            name = nameInput
+                        };
+                        player.gold = 25;
                         hoursSinceStart = 0;
                         time = 8;
                         using (var reader = new StreamReader("inventory.csv"))

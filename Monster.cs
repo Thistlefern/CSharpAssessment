@@ -6,11 +6,11 @@ namespace CSharpAssessment
 {
     class Monster : Entity
     {
-        public override bool Hostile()
-        {
-            hostile = true;
-            return hostile;
-        }
+        //public override bool Hostile()
+        //{
+        //    hostile = true;
+        //    return hostile;
+        //}
 
     }
 }

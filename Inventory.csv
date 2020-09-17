@@ -1,10 +1,9 @@
 ﻿Type,Name,HungerBoost,ThirstBoost,WeaponType,Damage,HandsNeeded,Rarity,Cost,Quantity
-money,gold,0,0,na,0,0,na,0,25
 food,bread,4,0,na,0,0,na,2,2
 food,apple,1,1,na,0,0,na,1,2
 food,egg,3,0,na,0,0,na,1,0
 drink,water,0,2,na,0,0,na,1,4
 drink,ale,1,1,na,0,0,na,5,2
 weapon,dagger,0,0,dagger,1,1,Common,5,5
-misc,blanket,0,0,na,0,3,3
-misc,rope,0,0,na,0,5,2
+misc,blanket,0,0,na,0,0,na,3,3
+misc,rope,0,0,na,0,0,na,5,2

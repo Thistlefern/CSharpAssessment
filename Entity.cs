@@ -23,12 +23,20 @@ namespace CSharpAssessment
         }
         public float defense = 0;
 
-        // Is the entity hostile towards the player?
-        public bool hostile;
-        public virtual bool Hostile()
+        // Gold
+        public int gold;
+        public virtual int Gold()
         {
-            hostile = false;
-            return hostile;
+            gold = 0;
+            return gold;
         }
+
+        //// Is the entity hostile towards the player?
+        //public bool hostile;
+        //public virtual bool Hostile()
+        //{
+        //    hostile = false;
+        //    return hostile;
+        //}
     }
 }

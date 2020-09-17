@@ -13,14 +13,5 @@ namespace CSharpAssessment
         public int fatigue = 0; // increases by 1 each hour, tired at 16, exhausted at 24 (penalty to stats)
         public string name;
 
-        // Inventory
-        public override float Gold()
-        {
-            gold = 10;
-            return gold;
-        }
-        
-
-
     }
 }
