@@ -18,7 +18,10 @@ namespace CSharpAssessment
 
             // Player creation
             Player player = new Player();
-            player.gold = 25;
+            player.health = player.Health();
+            player.gold = player.Gold();
+            int fightsWon = 0;
+            int level = (fightsWon/5) + 1;
             // Player inventory creation
             Item[] myInventory;
             using (var reader = new StreamReader("inventory.csv"))
@@ -73,9 +76,13 @@ namespace CSharpAssessment
             // Main game loop
             while (isGameRunning == true)
             {
-                bool isMonsterAlive = false;
+                bool monsterAlive = false;
+                
+                // loop while the player is alive
                 while (playerAlive == true)
                 {
+                    // monster creation
+                    Monster monster = new Monster();
                     // clock and day counter
                     if (time >= 24)
                     {
@@ -91,18 +98,37 @@ namespace CSharpAssessment
                     Console.WriteLine("What would you like to do?");
                     string gameInput = Console.ReadLine().ToLower().Trim();
 
+                    if (gameInput == "help")
+                    {
+                        Console.WriteLine("Command isn't doing anything? Make sure that you're spelling the command right.");
+                        Console.WriteLine("Command still isn't doing anything? You likely have written a command that doesn't exist. Try typing commands or command list to see a list of known commands.");
+                        Console.WriteLine("Out of a resource? Most resources, including food and drink, can be purchased in town.");
+                        Console.WriteLine("Out of money? Try trading some of your wares for coin, or defeating some monsters on the road.");
+                    }
+
+                    // command list
+                    // TODO AT END check that all commands are listed here
+                    if (gameInput == "commands" || gameInput == "command list")
+                    {
+                        Console.WriteLine("Command List:");
+                        Console.WriteLine("Help - if you're especially lost");
+                        Console.WriteLine("Eat - if you're feeling hungry");
+                        Console.WriteLine("Drink - if you're feeling thirsty");
+                        Console.WriteLine("Sleep - if you're feeling tired");
+                        Console.WriteLine("Travel - if you're ready to continue on your quest");
+                        Console.WriteLine("Quit - if you're ready to end your adventure");
+                        Console.WriteLine("");
+                    }
+
                     // eating
                     if (gameInput == "eat")
                     {
                         Console.WriteLine("What would you like to eat?");
                         foreach (Item tmpFood in myInventory)
                         {
-                            if (tmpFood.Type == "food")
+                            if (tmpFood.Type == "food" && tmpFood.Quantity > 0)
                             {
-                                if (tmpFood.Quantity > 0)
-                                {
-                                    Console.WriteLine($"{tmpFood.Name}: you have {tmpFood.Quantity} servings left.");
-                                }
+                                Console.WriteLine($"{tmpFood.Name}: you have {tmpFood.Quantity} servings left.");
                             }
                         }
                         string eatInput = Console.ReadLine().ToLower();
@@ -145,31 +171,28 @@ namespace CSharpAssessment
                         Console.WriteLine("What would you like to drink?");
                         foreach (Item tmpFood in myInventory)
                         {
-                            if (tmpFood.Type == "drink")
+                            if (tmpFood.Type == "drink" && tmpFood.Quantity > 0)
                             {
-                                if (tmpFood.Quantity > 0)
-                                {
-                                    Console.WriteLine($"{tmpFood.Name}: you have {tmpFood.Quantity} servings left.");
-                                }
+                                Console.WriteLine($"{tmpFood.Name}: you have {tmpFood.Quantity} servings left.");
                             }
-                            string drinkInput = Console.ReadLine().ToLower();
+                        }
+                        string drinkInput = Console.ReadLine().ToLower();
 
-                            // change quantity of beverage
-                            for (int i = 0; i < myInventory.Length; i++)
+                        // change quantity of beverage
+                        for (int i = 0; i < myInventory.Length; i++)
+                        {
+                            if (myInventory[i].Name == drinkInput)
                             {
-                                if (myInventory[i].Name == drinkInput)
+                                if (myInventory[i].Quantity == 0)
                                 {
-                                    if (myInventory[i].Quantity == 0)
-                                    {
-                                        Console.WriteLine($"You don't have any servings of {myInventory[i].Name}.");
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine($"You drink a serving of {myInventory[i].Name}.");
-                                        player.hunger -= myInventory[i].HungerBoost;
-                                        player.thirst -= myInventory[i].ThirstBoost;
-                                        myInventory[i].Quantity--;
-                                    }
+                                    Console.WriteLine($"You don't have any servings of {myInventory[i].Name}.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"You drink a serving of {myInventory[i].Name}.");
+                                    player.hunger -= myInventory[i].HungerBoost;
+                                    player.thirst -= myInventory[i].ThirstBoost;
+                                    myInventory[i].Quantity--;
                                 }
                             }
                         }
@@ -208,56 +231,165 @@ namespace CSharpAssessment
                         player.fatigue++;
                         Random travelEncounter = new Random();
                         int newEncounter = travelEncounter.Next(20);
-                        Console.WriteLine($"New encounter number: {newEncounter}"); // TODO remove later, debug line
                         if (newEncounter >= 6 && newEncounter <= 9)
                         {
                             Console.WriteLine("A monster appears!");
-                            Monster monster = new Monster();
-                            isMonsterAlive = true; // TODO add different types of monsters (name, stats)
+                            monster.name = "monster"; // TODO add different types of monsters (name, stats)
+                            monsterAlive = true;
                         }
-                        else if(newEncounter >= 10) // newEncounter >= 10 && newEncounter <= 12
+                        else if(newEncounter >= 10 && newEncounter <= 12)
                         {
-                            NPC bandit = new NPC(); // TODO if/else for choosing to fight or allow theft
+                            NPC bandit = new NPC();
                             Console.WriteLine("A bandit appears!");
                             Console.WriteLine("\"Alright, bud, we can do this the easy way or the hard way.\"");
-                            Console.WriteLine("WIll you allow this theft, or fight for your cart and wares?");
-                            string banditInput = Console.ReadLine().ToLower();
+                            Console.WriteLine("WIll you allow the thief to steal from you, or fight for your cart and wares?"); // TODO add theft of wares or change line
+                            bool beingRobbed = true;
+                            
+                            while(beingRobbed == true)
+                            {
+                                string banditInput = Console.ReadLine().ToLower();
 
-                            if(banditInput == "allow")
-                            {
-                                Console.WriteLine("\"Smart choice, bud.\"");
-                                Random moneyStolenRand = new Random();
-                                double moneyStolenPercent = moneyStolenRand.Next(50);
-                                if(moneyStolenPercent < 10)
+                                if (banditInput == "allow")
                                 {
-                                    moneyStolenPercent = 10;
+                                    Console.WriteLine("\"Smart choice, bud.\"");
+                                    Random moneyStolenRand = new Random();
+                                    double moneyStolenPercent = moneyStolenRand.Next(50);
+                                    if (moneyStolenPercent < 10)
+                                    {
+                                        moneyStolenPercent = 10;
+                                    }
+                                    double moneyStolen = player.gold * (moneyStolenPercent / 100);
+                                    player.gold -= Convert.ToInt32(moneyStolen);
+                                    Console.WriteLine($"The thief rifles around, and steals {Convert.ToInt32(moneyStolen)} gold. You now have {player.gold} gold pieces.");
+                                    Console.WriteLine("The thief leaves. That was unfortunate...");
+                                    beingRobbed = false;
                                 }
-                                double moneyStolen = player.gold * (moneyStolenPercent/100);
-                                player.gold -= Convert.ToInt32(moneyStolen);
-                                Console.WriteLine($"The thief rifles around, and steals {moneyStolen} gold. You now have {player.gold} gold pieces.");
-                                Console.WriteLine("The thief leaves. That was unfortunate...");
-                            }
-                            else if (banditInput == "fight")
-                            {
-                                isMonsterAlive = true;
-                            }
-                            else
-                            {
-                                Console.WriteLine("That's an unknown command. The thief has a knife pointed at you, so type allow or fight quickly!");
+                                else if (banditInput == "fight") // TODO add more text here
+                                {
+                                    monsterAlive = true;
+                                    monster.name = "bandit";
+                                    beingRobbed = false;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("That's an unknown command. The thief has a knife pointed at you, so choose to allow or fight quickly!");
+                                }
                             }
                         }
                         else if(newEncounter >= 13)
                         {
                             Console.WriteLine("Another traveller comes up the path.");
                             NPC npc = new NPC();
+                            // TODO add to the NPC encounter
                         }
                     }
 
                     // fight loop
-                    //while(isMonsterAlive == true)
-                    //{
+                    while (monsterAlive == true)
+                    {
+                        // initiate random damage amounts
+                        Random monAttRand = new Random();
+                        int monAttack = monAttRand.Next(6);
+                        Random playerAttRand = new Random();
+                        int playerAttack = playerAttRand.Next(6);
 
-                    //}
+                        // choose a weapon and attack with it
+                        Console.WriteLine("Which of your weapons will you attack with?");
+                        foreach (Item tmpWeapon in myInventory)
+                        {
+                            if (tmpWeapon.Type == "weapon" && tmpWeapon.Quantity > 0)
+                            {
+                                if(tmpWeapon.HandsNeeded == 2)
+                                {
+                                    Console.WriteLine($"{tmpWeapon.Name}, which requires both hands to use, and has a {tmpWeapon.Damage} damage base attack.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"{tmpWeapon.Name}, which has a {tmpWeapon.Damage} damage base attack.");
+                                }
+                            }
+                        }
+                        string weapInput = Console.ReadLine().ToLower();
+
+                        for (int i = 0; i < myInventory.Length; i++)
+                        {
+                            if (myInventory[i].Name == weapInput)
+                            {
+                                if (myInventory[i].Quantity == 0)
+                                {
+                                    Console.WriteLine($"You don't have a {myInventory[i].Name}!"); // TODO either make sure no weapons start with a vowel, or adjust for proper English
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"You attack with the {myInventory[i].Name}, dealing {(myInventory[i].Damage + player.Attack[playerAttack])*(1-monster.defense)} damage to the {monster.name}.");
+                                    monster.health -= (myInventory[i].Damage + player.Attack[playerAttack]) * (1 - monster.defense);
+                                    if(monster.health < 0)
+                                    {
+                                        monster.health = 0;
+                                    }
+                                    Console.WriteLine($"The {monster.name} now has {monster.health} health.");
+                                }
+                            }
+                        }
+                        if(monster.health == 0)
+                        {
+                            Console.WriteLine("You won the fight!"); // TODO add loot
+                            fightsWon++;
+                            if(fightsWon % 5 == 0)
+                            {
+                                Console.WriteLine("You feel stronger after all of these fights! Your attack and health have increased!");
+                                player.health += 10;
+                                for(int i = 0; i < player.Attack.Length; i++)
+                                {
+                                    player.Attack[i]++;
+                                }
+                            }
+                            monsterAlive = false;
+                        }
+                        else if (monster.health <= 5 && monster.name == "bandit")
+                        {
+                            Console.WriteLine("The bandit flees for their life. Good riddance!");
+                            monsterAlive = false;
+                        }
+                        else
+                        {
+                           
+                            Console.WriteLine($"The {monster.name} attacks you back!");
+                            player.health -= monster.Attack[monAttack];
+                            if(player.health < 0)
+                            {
+                                player.health = 0;
+                            }
+                            Console.WriteLine($"You take {monster.Attack[monAttack]} damage, and have {player.health} health left."); // TODO adjust when monsters have different stats
+                            if(player.health == 0)
+                            {
+                                Console.WriteLine("You lost the fight! Everything goes black...");
+                                playerAlive = false;
+                                monsterAlive = false;
+                            }
+                        }
+                        if (player.health <= (player.health / 4) && monster.name == "bandit")
+                        {
+                            Console.WriteLine("\"Don't make me kill you. Just give me what I want and we can go our seperate ways.\"");
+                            Console.WriteLine("Continue fighting?");
+                            string killBanditInput = Console.ReadLine().ToLower();
+                            if (killBanditInput == "n" || killBanditInput == "no")
+                            {
+                                Console.WriteLine("\"Smart choice, bud.\"");
+                                Random moneyStolenRand = new Random();
+                                double moneyStolenPercent = moneyStolenRand.Next(50);
+                                if (moneyStolenPercent < 10)
+                                {
+                                    moneyStolenPercent = 10;
+                                }
+                                double moneyStolen = player.gold * (moneyStolenPercent / 100);
+                                player.gold -= Convert.ToInt32(moneyStolen);
+                                Console.WriteLine($"The thief rifles around, and steals {Convert.ToInt32(moneyStolen)} gold. You now have {player.gold} gold pieces.");
+                                Console.WriteLine("The thief leaves. That was unfortunate...");
+                                monsterAlive = false;
+                            }
+                        }
+                    }
 
                     if (gameInput == "quit")
                     {

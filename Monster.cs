@@ -6,11 +6,6 @@ namespace CSharpAssessment
 {
     class Monster : Entity
     {
-        //public override bool Hostile()
-        //{
-        //    hostile = true;
-        //    return hostile;
-        //}
-
+            public int[] Attack = { 10, 11, 12, 13, 14, 15 };
     }
 }

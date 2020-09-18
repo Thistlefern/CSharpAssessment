@@ -6,22 +6,22 @@ namespace CSharpAssessment
 {
     class Entity
     {
+        public string name;
+
         // Health
-        public float health;
+        public float health = 20; // TODO set to 0 after creating other monsters
         public virtual float Health()
         {
-            health = 100;
             return health;
         }
 
         // Fighting stats
-        public float attackBase;
-        public virtual float AttackBase()
-        {
-            attackBase = 10;
-            return attackBase;
-        }
+        // Attack is listed as arrays for each subclass
         public float defense = 0;
+        public virtual float Defense()
+        {
+            return defense;
+        }
 
         // Gold
         public int gold;
@@ -30,13 +30,5 @@ namespace CSharpAssessment
             gold = 0;
             return gold;
         }
-
-        //// Is the entity hostile towards the player?
-        //public bool hostile;
-        //public virtual bool Hostile()
-        //{
-        //    hostile = false;
-        //    return hostile;
-        //}
     }
 }
