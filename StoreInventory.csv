@@ -1,0 +1,33 @@
+﻿Type,Name,HungerBoost,ThirstBoost,Alcohol,Damage,HandsNeeded,DefenseBoost,Rarity,CostValue,GenStoreMax,GenStoreWillBuy,FoodVendorMax,FoodVendorWillBuy,ArmorerMax,ArmorerWillBuy,AdventurerMax,AdventurerWillBuy
+money,gold,0,0,0,0,0,0,common,1,250,no,50,no,200,no,150,no
+armor,chain mail,0,0,0,0,0,50,uncommon,150,1,yes,0,no,1,yes,1,yes
+armor,leather armor,0,0,0,0,0,25,common,65,1,yes,0,no,2,yes,1,yes
+armor,scale mail,0,0,0,0,0,35,uncommon,100,1,yes,0,no,1,yes,1,yes
+armor,shield,0,0,0,0,1,10,common,50,2,yes,0,no,2,yes,1,yes
+drink,ale,1,1,1,0,0,0,common,9,8,yes,10,yes,0,no,3,yes
+drink,milk,0,2,0,0,0,0,common,3,15,yes,10,yes,0,no,2,yes
+drink,water,0,2,0,0,0,0,common,1,15,yes,12,yes,0,no,10,yes
+drink,wine,0,1,2,0,0,0,uncommon,12,5,yes,5,yes,0,no,3,yes
+food,apple,1,1,0,0,0,0,common,1,20,yes,16,yes,0,no,10,yes
+food,bread,4,0,0,0,0,0,common,3,20,yes,16,yes,0,no,10,yes
+food,cheese,3,0,0,0,0,0,common,5,15,yes,10,yes,0,no,8,yes
+food,egg,2,0,0,0,0,0,common,1,30,yes,18,yes,0,no,6,yes
+food,fish,3,0,0,0,0,0,common,3,20,yes,15,yes,0,no,8,yes
+food,jerky,2,0,0,0,0,0,common,2,20,yes,20,yes,0,no,15,yes
+food,pie,6,0,0,0,0,0,uncommon,12,5,yes,1,yes,0,no,0,yes
+food,raw meat,4,0,0,0,0,0,common,5,0,yes,0,yes,0,no,3,no
+food,sausage,5,0,0,0,0,0,common,5,12,yes,5,yes,0,no,2,yes
+food,steak,9,0,0,0,0,0,uncommon,10,8,yes,0,yes,0,no,0,yes
+food,stew,8,1,0,0,0,0,uncommon,8,10,yes,0,yes,0,no,0,yes
+misc,blanket,0,0,0,0,0,0,common,5,15,yes,0,no,0,no,2,yes
+misc,common clothes,0,0,0,0,0,0,common,12,12,yes,0,no,2,yes,2,yes
+misc,fancy clothes,0,0,0,0,0,0,uncommon,30,3,yes,0,no,0,no,1,yes
+misc,fishing pole,0,0,0,0,2,0,common,20,4,yes,1,yes,0,no,2,yes
+misc,rope,0,0,0,0,0,0,common,8,12,yes,0,no,0,no,2,yes
+misc,wolf pelt,0,0,0,0,0,0,common,10,5,yes,0,no,0,yes,1,no
+weapon,battleaxe,0,0,0,4,1,0,common,65,2,yes,0,no,2,yes,1,yes
+weapon,bone,0,0,0,1,1,0,common,5,0,yes,0,no,0,no,2,no
+weapon,dagger,0,0,0,2,1,0,common,50,5,yes,0,no,10,yes,2,yes
+weapon,greatsword,0,0,0,6,2,0,uncommon,100,1,yes,0,no,2,yes,1,yes
+weapon,longsword,0,0,0,4,1,0,common,75,2,yes,0,no,3,yes,1,yes
+weapon,shortbow,0,0,0,3,2,0,common,75,2,yes,0,no,3,yes,1,yes

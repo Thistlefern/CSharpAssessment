@@ -1,0 +1,33 @@
+﻿Type,Name,HungerBoost,ThirstBoost,Alcohol,Damage,HandsNeeded,DefenseBoost,Rarity,CostValue,BanditMax,OrcMax,SkeletonMax,WolfMax
+money,gold,0,0,0,0,0,0,common,1,20,10,5,0
+armor,chain mail,0,0,0,0,0,50,uncommon,150,0,0,0,0
+armor,leather armor,0,0,0,0,0,25,common,65,1,0,0,0
+armor,scale mail,0,0,0,0,0,35,uncommon,100,0,1,0,0
+armor,shield,0,0,0,0,1,10,common,50,0,0,0,0
+drink,ale,1,1,1,0,0,0,common,9,2,1,0,0
+drink,milk,0,2,0,0,0,0,common,3,0,0,0,0
+drink,water,0,2,0,0,0,0,common,1,0,0,0,0
+drink,wine,0,1,2,0,0,0,uncommon,12,2,0,0,0
+food,apple,1,1,0,0,0,0,common,1,0,0,0,0
+food,bread,4,0,0,0,0,0,common,3,0,0,0,0
+food,cheese,3,0,0,0,0,0,common,5,0,0,0,0
+food,egg,2,0,0,0,0,0,common,1,0,0,0,0
+food,fish,3,0,0,0,0,0,common,3,0,0,0,0
+food,jerky,2,0,0,0,0,0,common,2,0,0,0,0
+food,pie,6,0,0,0,0,0,uncommon,12,0,0,0,0
+food,raw meat,4,0,0,0,0,0,common,5,0,0,0,5
+food,sausage,5,0,0,0,0,0,common,5,0,0,0,0
+food,steak,9,0,0,0,0,0,uncommon,10,0,1,0,0
+food,stew,8,1,0,0,0,0,uncommon,8,0,0,0,0
+misc,blanket,0,0,0,0,0,0,common,5,0,0,0,0
+misc,common clothes,0,0,0,0,0,0,common,12,1,0,0,0
+misc,fancy clothes,0,0,0,0,0,0,uncommon,30,1,0,0,0
+misc,fishing pole,0,0,0,0,2,0,common,20,0,0,0,0
+misc,rope,0,0,0,0,0,0,common,8,1,0,0,0
+misc,wolf pelt,0,0,0,0,0,0,common,10,0,0,0,1
+weapon,battleaxe,0,0,0,4,1,0,common,65,0,1,0,0
+weapon,bone,0,0,0,1,1,0,common,5,0,0,5,0
+weapon,dagger,0,0,0,2,1,0,common,50,2,0,0,0
+weapon,greatsword,0,0,0,6,2,0,uncommon,100,0,1,0,0
+weapon,longsword,0,0,0,4,1,0,common,75,0,0,1,0
+weapon,shortbow,0,0,0,3,2,0,common,75,0,0,1,0

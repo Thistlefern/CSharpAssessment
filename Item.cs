@@ -10,24 +10,26 @@ namespace CSharpAssessment
         string name;
         int hungerBoost;
         int thirstBoost;
-        string weaponType;
+        int alcohol;
         int damage;
         int handsNeeded;
+        int defenseBoost;
         string rarity;
-        int cost;
+        int costValue;
         int quantity;
-        // TODO add more types of items here and to the inventory
-        // TODO adjust costs for god's sake
+        // TODO add descriptions
+        // TODO AT END make sure all of the inventory types in each csv are the same, and all listed here
 
         public string Type { get => type; set => type = value; }
         public string Name { get => name; set => name = value; }
         public int HungerBoost { get => hungerBoost; set => hungerBoost = value; }
         public int ThirstBoost { get => thirstBoost; set => thirstBoost = value; }
-        public string WeaponType { get => weaponType; set => weaponType = value; }
+        public int Alcohol { get => alcohol; set => alcohol = value; }
         public int Damage { get => damage; set => damage = value; }
         public int HandsNeeded { get => handsNeeded; set => handsNeeded = value; }
+        public int DefenseBoost { get => defenseBoost; set => defenseBoost = value; }
         public string Rarity { get => rarity; set => rarity = value; }
-        public int Cost { get => cost; set => cost = value; }
+        public int CostValue { get => costValue; set => costValue = value; }
         public int Quantity { get => quantity; set => quantity = value; }
 
     }
