@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Security;
 using System.Text;
 
 namespace CSharpAssessment
@@ -7,21 +8,27 @@ namespace CSharpAssessment
     class Entity
     {
         public string name;
-
         // Health
-        public float health = 20; // TODO set to 0 after creating other monsters
-        public virtual float Health()
-        {
-            return health;
-        }
+        public double health;
 
         // Fighting stats
-        // Attack is listed as arrays for each subclass
+        public int attack;
+        public int attackBonus;
+        static int[] AttackArray = { 0, 1, 2, 3, 4, 5 };
+        public double defense;
 
-        public float defense = 0;
-        public virtual float Defense()
+        // initiate random damage amounts
+        public virtual void Attack()
         {
-            return defense;
+            Random attRand = new Random();
+            attack = AttackArray[attRand.Next(6)] + attackBonus;
         }
+
+        public Entity()
+        {
+            name = "stranger";
+            health = 20;
+        }
+
     }
 }

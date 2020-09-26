@@ -6,5 +6,11 @@ namespace CSharpAssessment
 {
     class Skeleton : Entity
     {
+        public Skeleton()
+        {
+            name = "skeleton";
+            health = 10;
+            defense = 0.50;
+        }
     }
 }

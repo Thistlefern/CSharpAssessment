@@ -6,11 +6,11 @@ namespace CSharpAssessment
 {
     class Bandit : Entity
     {
-        public int[] AttackArray = { 10, 11, 12, 13, 14, 15 };
-
-        public void Attack()
+        public Bandit()
         {
-            
+            name = "bandit";
+            health = 50;
+            attackBonus = 3;
         }
     }
 }
