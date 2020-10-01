@@ -9,7 +9,6 @@ namespace CSharpAssessment
         public Wolf()
         {
             name = "wolf";
-            attackBonus = 2;
         }
     }
 }

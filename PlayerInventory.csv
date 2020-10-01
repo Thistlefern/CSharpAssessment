@@ -1,34 +1,30 @@
-﻿Row,Type,Name,HungerBoost,ThirstBoost,Alcohol,Damage,HandsNeeded,DefenseBoost,CostValue,Quantity
-0,money,gold,0,0,0,0,0,0,1,100
-0,drink,ale,1,1,1,0,0,0,9,0
-0,food,apple,1,1,0,0,0,0,1,6
-0,weapon,battleaxe,0,0,0,4,1,0,65,0
-0,misc,blanket,0,0,0,0,0,0,5,3
-0,weapon,bone,0,0,0,1,1,0,5,0
-0,food,bread,4,0,0,0,0,0,3,2
-0,armor,chain mail,0,0,0,0,0,50,150,0
-0,food,cheese,3,0,0,0,0,0,5,3
-0,misc,common clothes,0,0,0,0,0,0,12,2
-0,weapon,dagger,0,0,0,2,1,0,50,2
-0,food,egg,2,0,0,0,0,0,1,0
-0,misc,fancy clothes,0,0,0,0,0,0,30,0
-0,food,fish,3,0,0,0,0,0,3,0
-0,misc,fishing pole,0,0,0,0,2,0,20,1
-0,weapon,greatsword,0,0,0,6,2,0,100,0
-0,drink,health potion,0,1,0,0,0,0,100,0
-0,food,jerky,2,0,0,0,0,0,2,0
-0,armor,leather armor,0,0,0,0,0,25,65,0
-0,weapon,longsword,0,0,0,4,1,0,75,0
-0,drink,milk,0,2,0,0,0,0,3,0
-0,food,pie,6,0,0,0,0,0,12,0
-0,food,raw meat,4,0,0,0,0,0,5,0
-0,misc,rope,0,0,0,0,0,0,8,2
-0,food,sausage,5,0,0,0,0,0,5,0
-0,armor,scale mail,0,0,0,0,0,35,100,0
-0,armor,shield,0,0,0,0,1,10,50,0
-0,weapon,shortbow,0,0,0,3,2,0,75,0
-0,food,steak,9,0,0,0,0,0,10,0
-0,food,stew,8,1,0,0,0,0,8,0
-0,drink,water,0,2,0,0,0,0,1,5
-0,drink,wine,0,1,2,0,0,0,12,0
-0,misc,wolf pelt,0,0,0,0,0,0,10,0
+﻿Row,Type,Name,HungerBoost,ThirstBoost,Alcohol,Damage,HandsNeeded,CostValue,Quantity,Description
+0,money,gold,0,0,0,0,0,1,100,"Gold pieces, these can be exchanged for goods with vendors"
+0,drink,ale,1,1,1,0,0,9,0,An alcoholic beverage made from grains
+0,food,apple,1,1,0,0,0,1,6,"A fruit that comes in red, yellow, and green varieties"
+0,weapon,battleaxe,0,0,0,4,1,65,0,A large broad-bladed axe
+0,misc,blanket,0,0,0,0,0,5,3,A warm and fairly comfortable wool blanket
+0,weapon,bone,0,0,0,1,1,5,0,A rigid organ that constitutes part of the vertebrate skeleton in animals
+0,food,bread,4,0,0,0,0,3,2,A baked food prepared from a dough of flour and water
+0,food,cheese,3,0,0,0,0,5,3,A dairy product that forms by coagulation of the milk protein casein
+0,misc,common clothes,0,0,0,0,0,12,2,A set of clothes consisting of a loose shirt and baggy breeches
+0,weapon,dagger,0,0,0,2,1,50,2,"A short knife with a pointed and edged blade, used as a weapon"
+0,food,egg,2,0,0,0,0,1,0,The unfertilized egg of a chicken
+0,misc,fancy clothes,0,0,0,0,0,30,0,A set of clothes is designed specifically to be expensive and to show it
+0,food,fish,3,0,0,0,0,3,0,A gill-bearing aquatic craniate animals that lack limbs with digits
+0,misc,fishing pole,0,0,0,0,0,20,1,"A long, flexible rod used by fishermen to catch fish"
+0,weapon,greatsword,0,0,0,6,2,100,0,A heavy sword which possesses a large grip for leverage
+0,drink,health potion,0,1,0,0,0,100,0,A vial of transparent red liquid which increases your health by 20 upon drinking
+0,food,jerky,2,0,0,0,0,2,0,Lean trimmed meat that has been cut into strips and dried
+0,weapon,longsword,0,0,0,4,1,75,0,A sword characterized as having a cruciform hilt with a grip
+0,drink,milk,0,2,0,0,0,3,0,A nutrient-rich liquid food produced by cows
+0,food,pie,6,0,0,0,0,12,0,A baked dish which is usually made of a pastry dough casing that contains an assorment of fruit
+0,food,raw meat,4,0,0,0,0,5,0,The uncooked flesh of an animal
+0,misc,rope,0,0,0,0,0,8,2,A group of fibers that are braided together into a larger and stronger form
+0,food,sausage,5,0,0,0,0,5,0,"A meat product made from ground meat, salt, and spices"
+0,weapon,shortbow,0,0,0,3,2,75,0,A ranged weapon system consisting of an elastic launching device (bow) and long-shafted projectiles (arrows)
+0,food,steak,9,0,0,0,0,10,0,Meat sliced across the muscle fibers and cooked to perfection
+0,food,stew,8,1,0,0,0,8,0,A combination of solid food ingredients that have been cooked in liquid and served in the resultant gravy
+0,drink,water,0,2,0,0,0,1,5,"A colorless, tasteless liquid"
+0,drink,wine,0,1,2,0,0,12,0,An alcoholic drink made from fermented grape juice
+0,misc,wolf pelt,0,0,0,0,0,10,0,The fur of a wolf

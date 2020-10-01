@@ -9,8 +9,8 @@ namespace CSharpAssessment
         public Bandit()
         {
             name = "bandit";
-            health = 50;
-            attackBonus = 3;
+            health = 40;
+            attackBonus = 2;
         }
     }
 }

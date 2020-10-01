@@ -10,7 +10,6 @@ namespace CSharpAssessment
         {
             name = "skeleton";
             health = 10;
-            defense = 0.50;
         }
     }
 }

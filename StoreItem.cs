@@ -11,8 +11,8 @@ namespace CSharpAssessment
         string genStoreWillBuy;
         int foodVendorMax;
         string foodVendorWillBuy;
-        int armorerMax;
-        string armorerWillBuy;
+        int smithMax;
+        string smithWillBuy;
         int adventurerMax;
         string adventurerWillBuy;
 
@@ -21,8 +21,8 @@ namespace CSharpAssessment
         public string GenStoreWillBuy { get => genStoreWillBuy; set => genStoreWillBuy = value; }
         public int FoodVendorMax { get => foodVendorMax; set => foodVendorMax = value; }
         public string FoodVendorWillBuy { get => foodVendorWillBuy; set => foodVendorWillBuy = value; }
-        public int ArmorerMax { get => armorerMax; set => armorerMax = value; }
-        public string ArmorerWillBuy { get => armorerWillBuy; set => armorerWillBuy = value; }
+        public int SmithMax { get => smithMax; set => smithMax = value; }
+        public string SmithWillBuy { get => smithWillBuy; set => smithWillBuy = value; }
         public int AdventurerMax { get => adventurerMax; set => adventurerMax = value; }
         public string AdventurerWillBuy { get => adventurerWillBuy; set => adventurerWillBuy = value; }
     }

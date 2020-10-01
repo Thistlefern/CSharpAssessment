@@ -15,7 +15,6 @@ namespace CSharpAssessment
         public int attack;
         public int attackBonus;
         static int[] AttackArray = { 0, 1, 2, 3, 4, 5 };
-        public double defense;
 
         // initiate random damage amounts
         public virtual void Attack()

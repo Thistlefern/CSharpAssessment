@@ -14,12 +14,9 @@ namespace CSharpAssessment
         int alcohol;
         int damage;
         int handsNeeded;
-        int defenseBoost;
         int costValue;
         int quantity;
-
-        // TODO add item descriptions
-        // TODO AT END make sure all of the inventory types in each csv are the same, and all listed here
+        string description;
 
         public int Row { get => row; set => row = value; }
         public string Type { get => type; set => type = value; }
@@ -29,8 +26,8 @@ namespace CSharpAssessment
         public int Alcohol { get => alcohol; set => alcohol = value; }
         public int Damage { get => damage; set => damage = value; }
         public int HandsNeeded { get => handsNeeded; set => handsNeeded = value; }
-        public int DefenseBoost { get => defenseBoost; set => defenseBoost = value; }
         public int CostValue { get => costValue; set => costValue = value; }
         public int Quantity { get => quantity; set => quantity = value; }
+        public string Description { get => description; set => description = value; }
     }
 }
